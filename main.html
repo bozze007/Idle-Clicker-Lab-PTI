@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Idle Clicker Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="#main-game">Main Game</a></li>
+			<li><a href="#about-us">About Us</a></li>
+		</ul>
+	</nav>
+
+	<div id="main-game">
+		<h1>Idle Clicker Game</h1>
+		<p>Click the Tahu to earn money:</p>
+		<div id="tahu" onclick="clickTahu()"></div>
+		<p>Money: <span id="money">0</span></p>
+		<div id="upgrades">
+			<h2>Upgrades</h2>
+			<button onclick="buyUpgrade(1)">Upgrade 1 (Cost: 10)</button>
+			<button onclick="buyUpgrade(2)">Upgrade 2 (Cost: 20)</button>
+			<button onclick="buyUpgrade(3)">Upgrade 3 (Cost: 30)</button>
+		</div>
+		<div id="auto-click">
+			<h2>Auto-Click (Cost: 100)</h2>
+			<button onclick="buyAutoClick()">Buy Auto-Click</button>
+			<p>Auto-Clickers: <span id="auto-clickers">0</span></p>
+		</div>
+	</div>
+
+	<div id="about-us">
+		<h1>About Us</h1>
+		<p>We are a team of developers who love making games!</p>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
