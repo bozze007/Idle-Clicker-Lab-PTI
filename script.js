@@ -1,52 +1,54 @@
 // Global variables
 let money = 0;
 let autoClickers = 0;
+let clickValue = 1;
 
 // Clicking the Tahu
 function clickTahu() {
-	money++;
-	document.getElementById('money').innerHTML = money;
+  money += clickValue;
+  updateMoney();
 }
 
 // Buying an upgrade
+
+function clickTahu() {
+  money += clickValue;
+  updateMoney();
+}
+
+function updateMoney() {
+  document.getElementById("money").innerText = money;
+}
+
 function buyUpgrade(upgradeNumber) {
-    const upgradeCost = (upgradeNumber + 1) * 10;
-    if (money >= upgradeCost) {
-      money -= upgradeCost;
-      document.getElementById('money').innerHTML = money;
-      const autoClickValue = upgradeNumber + 1;
-      const autoClickButton = document.createElement('button');
-      autoClickButton.innerHTML = `Upgrade ${upgradeNumber + 1} (Cost: ${upgradeCost})`;
-      autoClickButton.onclick = function() {
-        buyUpgrade(upgradeNumber + 1);
-      };
-      document.getElementById(`upgrade-${upgradeNumber}`).replaceWith(autoClickButton);
-  
-      // add upgrade effect
-      const upgradeEffect = () => {
-        money += autoClickValue;
-        document.getElementById('money').innerHTML = money;
-      };
-      setInterval(upgradeEffect, 1000);
-    }
+  let upgradeCost = upgradeNumber * 10;
+  if (money >= upgradeCost) {
+    money -= upgradeCost;
+    clickValue *= 2;
+    updateMoney();
+    let upgradeButton = document.getElementById("upgrades").getElementsByTagName("button")[upgradeNumber - 1];
+    upgradeButton.innerText = "Upgraded!";
+    upgradeButton.disabled = true;
+  } else {
+    alert("Duit lu ga cukup bro, cari duit dulu sono");
   }
-  
+}
 
-// Buying an auto-clicker
 function buyAutoClick() {
-	if (money >= 100) {
-		money -= 100;
-		autoClickers++;
-		document.getElementById('money').innerHTML = money;
-		document.getElementById('auto-clickers').innerHTML = autoClickers;
-	}
+  let autoClickCost = 100;
+  if (money >= autoClickCost) {
+    money -= autoClickCost;
+    autoClickers++;
+    setInterval(autoClick, 1000);
+    updateMoney();
+    document.getElementById("auto-clickers").innerText = autoClickers;
+  } else {
+    alert("Duit lu ga cukup bro, cari duit dulu sono");
+  }
 }
 
-// Auto-clickers click the Tahu automatically
 function autoClick() {
-	money += autoClickers;
-	document.getElementById('money').innerHTML = money;
+  money += autoClickers * clickValue;
+  updateMoney();
 }
 
-// Call autoClick function every second
-setInterval(autoClick, 1000);

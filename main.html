@@ -12,20 +12,23 @@
 	<nav>
 		<ul>
 			<li><a href="#main-game">Main Game</a></li>
-			<li><a href="#about-us">About Us</a></li>
+			<li><a href="aboutUs.html">About Us</a></li>
 		</ul>
 	</nav>
 
 	<div id="main-game">
-		<h1>Idle Clicker Game</h1>
-		<p>Click the Tahu to earn money:</p>
-		<div id="tahu" onclick="clickTahu()"></div>
+		<h1>The Rock Clicker Game</h1>
+		<p>Click the Rock to earn money:</p>
+		<div id="tahu" onclick="clickTahu()">
+			<img id="therock" src="tahuBulat.png" alt="">	
+		</div>
 		<p>Money: <span id="money">0</span></p>
 		<div id="upgrades">
 			<h2>Upgrades</h2>
 			<button onclick="buyUpgrade(1)">Upgrade 1 (Cost: 10)</button>
 			<button onclick="buyUpgrade(2)">Upgrade 2 (Cost: 20)</button>
 			<button onclick="buyUpgrade(3)">Upgrade 3 (Cost: 30)</button>
+			<p id="warning"></p>
 		</div>
 		<div id="auto-click">
 			<h2>Auto-Click (Cost: 100)</h2>
@@ -34,10 +37,7 @@
 		</div>
 	</div>
 
-	<div id="about-us">
-		<h1>About Us</h1>
-		<p>We are a team of developers who love making games!</p>
-	</div>
+	
 
 	<script src="script.js"></script>
 </body>
