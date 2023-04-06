@@ -4,22 +4,31 @@ let autoClickers = 0;
 let clickValue = 1;
 
 // Clicking the Tahu
+var animationRunning = false;
 function clickTahu() {
   money += clickValue;
   updateMoney();
+
+  var tahu = document.getElementById("tahu");
+  if (!animationRunning) {
+    animateTahu(tahu);
+  }
 }
 
-// Buying an upgrade
-
-function clickTahu() {
-  money += clickValue;
-  updateMoney();
+function animateTahu(tahu) {
+  tahu.classList.add("animated", "bounce");
+  animationRunning = true;
+  window.requestAnimationFrame(function() {
+    tahu.classList.remove("animated", "bounce");
+    animationRunning = false;
+  });
 }
 
 function updateMoney() {
   document.getElementById("money").innerText = money;
 }
 
+// Buying an upgrade
 function buyUpgrade(upgradeNumber) {
   let upgradeCost = upgradeNumber * 10;
   if (money >= upgradeCost) {
@@ -51,4 +60,3 @@ function autoClick() {
   money += autoClickers * clickValue;
   updateMoney();
 }
-
